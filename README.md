@@ -410,6 +410,31 @@ tsc hof1.ts
 generates a "js" file ==> hof1.js
 
 
+function merge<U, V>(obj1:U, obj2:V) {
+	return {
+		...obj1,
+		...obj2
+	}
+}
+
+
+let person = merge( {
+	name: 'Larry'
+},
+{
+	age: 25
+});
+
+person has name and age
+
+this also works:
+let person = merge( {
+	name: 'Larry'	
+}, 25); // valid
+
+function merge<U extends object, V extends object>(obj1:U, obj2:V) {
+
+==========================
 
 
 

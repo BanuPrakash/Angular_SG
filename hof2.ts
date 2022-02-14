@@ -16,15 +16,6 @@ function filter<T>(elems:T[], predicateFn:(elem:T) => boolean): T[] {
 	return res;
 }
 
-let res = [];
-
-forEach(elems, e => {
-   if(predicateFn(e) {
-    res.add(e);
-  }
-});
-
-
 // HOF with Generics
 function forEach<T>(elems:T[], action:(elem:T) => void): void {
 	let i:number;
@@ -46,3 +37,9 @@ let products:Product[] = [
       {"id":5,"name":"Samsung","price":68000.00,"category" : "tv"}];
 
 forEach<Product>(products, console.log);
+
+console.log("***********");
+
+let res:Product[] = filter(products, e => e.category === 'mobile');
+
+forEach<Product>(res, console.log);
