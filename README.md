@@ -434,7 +434,251 @@ let person = merge( {
 
 function merge<U extends object, V extends object>(obj1:U, obj2:V) {
 
-==========================
+========================================
+https://rxmarbles.com/
+
+map hof
+
+
+task:
+1) pass product json and get back names
+2) pass names and get back uppercase names
+3) pass numbers and get value * 2
+
+function map<T, R>(elems:T[], transformFn:(elem:T) => R): R[] {
+
+===========================================
+
+HOF ==> function returning a function
+
+
+getEmployee(5); ==> makes an api call to Spring boot / Razor MVC ==> DB ==> sends JSON ==> cache
+
+getEmployee(5); ==> cache
+
+============================================================
+
+NodeJS
+
+Node.js is a Platform / JavaScript runtime environment with V8 engine.
+
+Where can I use NodeJS?
+1) to build RESTful Web services / GraphQL web services similar to Spring Boot / .NET MVC
+2) Build traditional web application development like ==> servlet/JSP, ASP.NET, PHP
+3) Realtime application dev like ChatBot
+4) Streaming API like OTT ==> Netflix, Hotstar, Prime , Voot, SunNxt,..
+5) Client side web application bundling
+	5.1) we may chosse to write code in DART, CoffeScript, Typescript
+		==> transcompiled to JS to make it compatable for browser
+
+	5.2) test the code ==> Unit testing / E2E testing
+	5.3) Static Code analyis ==> ESLint / TSLint
+	5.4) bundle the code after minify, uglify 
+		function doTask () {
+			var products = [];
+		}
+		into:
+		function o(){var p=[];}
+
+		<script src="a.js"></script>	
+		<script src="b.js"></script>
+		<script src="c.js"></script>
+		<script src="d.js"></script>
+
+		50+ files
+		bundle.js
+
+Package Managers: NPM and YARN package managers for NodeJS
+node comes with pre-defined modules like "fs", "http", "crypto", ..
+many a times we need 3rd party modules in project ==> "react", "angular", "jquery", "lodash"
+
+yarn add lodash
+npm install lodash
+every project has "node_modules" folder ==> 3rd party libraries are downloaded into this folder
+
+--
+
+npm publish
+
+this is to publish node module onto repo
+
+---
+
+to run scripts
+
+npm start
+npm test
+npm run e2e
+npm run bundle
+
+-------------------------------------------
+Initialize a node project
+
+nodeexamples> npm init --y
+
+
+creates package.json file
+==> one per project where scripts, dependencies, devDependencies are configured
+
+dependencies=> modules required in production also
+
+"dependencies": {
+    "lodash": "^4.17.21"
+ }
+
+devDependencies ==> modules required only in development environment [ testing, bundle, lint]
+npm i lodash
+
+"lodash": "^4.17.21" any latest version equal or greater than 
+
+"lodash": "4.17.21" exact version 
+
+"lodash": "~4.17.21" ==> major version has to be "4", minor and patch can be latest
+
+
+team member
+download project - "node_modules" from "repo"
+
+in project: npm i
+
+=====================================
+
+JavaScript in TypeScript
+
+Approach 
+1)
+
+JS included using CDN
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script src="example.js"></script>
+</body>
+
+example.ts
+declare var random:any;
+
+function doTask(): void {
+    console.log(random(1,100));
+}
+
+
+Approach 2) Declaration files
+using typings.d.ts
+declare module 'lodash' {
+    export function random(min:number, max:number): number
+}
+
+example.ts
+import {random} from 'lodash';
+
+function doTask(): void {
+    console.log(random(1,100));
+}
+
+Approach 3)
+using DefinitelyTyped
+https://github.com/DefinitelyTyped/DefinitelyTyped
+
+The repository for high quality TypeScript type definitions.
+npm i @types/lodash
+==> no need for "typings.d.ts"
+
+
+npm i @types/jquery
+npm i @types/react
+npm i @types/lodash
+npm i @types/chart
+
+===========================================================
+
+JavaScript build tools :Grunt, Gulp, Webpack, Parcel
+
+Grunt is a JavaScript task runner, a tool used to automatically perform frequent tasks such as minification, compilation, unit testing, linting, bundle
+
+
+Webpack: default used by react, angular, Vue
+
+npm i webpack webpack-cli webpack-dev-server typescript ts-loader html-webpack-plugin -D
+or
+yarn add webpack webpack-cli webpack-dev-server typescript ts-loader html-webpack-plugin -D
+
+
+=============
+folder> npm init --y
+folder> 
+npm i webpack webpack-cli webpack-dev-server typescript ts-loader html-webpack-plugin -D
+or
+yarn add webpack webpack-cli webpack-dev-server typescript ts-loader html-webpack-plugin -D
+
+
+folder> tsc --init
+
+
+```
+export default class Person {
+    name:string;
+    age:number;
+    constructor(name:string, age:number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    getName():string {
+        return this.name;
+    }
+
+    getAge():number {
+        return this.age;
+    }
+}
+
+```
+
+webpack.config.js
+
+package.json
+"scripts": {
+    "dev" :"webpack --mode development",
+    "prod": "webpack --mode production"
+}
+
+src/ index.ts, compute.ts, Person.ts
+
+
+npm run dev
+
+
+asset bundle.js 3.95 KiB [emitted] (name: main)
+./src/index.ts 511 bytes [built] [code generated]
+./src/compute.ts 248 bytes [built] [code generated]
+./src/Person.ts 429 bytes [built] [code generated]
+webpack 5.68.0 compiled successfully in 5398 ms
+
+
+--
+
+npm run prod
+==> minify
+==> uglify
+
+asset bundle.js 893 bytes [emitted] [minimized] (name: main)
+./src/index.ts 511 bytes [built] [code generated]
+./src/compute.ts 248 bytes [built] [code generated]
+./src/Person.ts 429 bytes [built] [code generated]
+webpack 5.68.0 compiled successfully in 5795 ms
+
+
+
+
+
+
+
+ 
+ 
+
+
+
 
 
 
