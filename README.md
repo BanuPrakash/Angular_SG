@@ -45,7 +45,7 @@ age++; // error
 JS engines ==> V8, SpiderMonkey, ...
 
 file.js ==> concept of global & function creation and exection context, hoisting
-
+```
 var g = 100;
 
 function doTask() {
@@ -82,6 +82,7 @@ function add(x, y) {
 
 let res = add(4,5); // res will be "undefined"
 
+```
 ==> semi-colon insertion will building AST by engine
 
 =========================
@@ -140,6 +141,7 @@ let person: {
 
 
 IN JS 
+```
 let person = {
 	name: "Peter",
 	age:32
@@ -173,7 +175,7 @@ people = [{
 	age:24
 }
 ]
-
+```
 Union types:
 
 let course:string | number = "Angular 13";
@@ -181,11 +183,12 @@ let course:string | number = "Angular 13";
 course = 780; // valid
 
 3) Functions
-
+```
 function add(a:number, b:number) : number | string {
 	return a + b;
 	// or return "Result : " + (a + b); // valid
 } 
+```
 
 4) "any" type
 won't trigger type errors
@@ -212,6 +215,7 @@ At runtime we get callback is not a function.
 
 "unknown" ==> need to perform typechecking before using  ==> enforces
 
+```
 function doTask(callback:unknown):void {
 	if(typeof callback === 'function') {
 		callback();
@@ -222,6 +226,7 @@ function doTask(callback:unknown):void {
 
 doTask(100);
 
+```
 ----------------------------------
 
 Optional Properties [ ? ]
