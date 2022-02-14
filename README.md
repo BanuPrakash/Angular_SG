@@ -320,9 +320,94 @@ const btn = document.getElementById("okBtn") as HTMLButtonElement;
 btn.click();
 
 
+===================
+
+Callbacks, promise api, async await, ...
+
+JavaScript engine callback and event loop
+
+
+console.log("Hello!!!");
+
+setInterval(function timed() {
+	console.log("time!!!")
+}, 500);
+
+$("#btn").click(function clicked() {
+	console.log("clicked!!!")
+});
+
+console.log("Bye!!!");
+
+
+==
+
+void run() {
+	while(true) {
+		Thread.sleep(500);
+		callbackQueue.push(timed());
+	}
+}
+
+====================
+
+Function Types and Arrow Opertors:
+
+
+let add: (x:number, y:number) => number;
+
+add = function(x:number, y: number) {
+	return x + y;
+}
+or
+add = (x:number, y: number) => x + y;
+
+
+=============================
+
+HOF ==> High Order Functions
+* functions taking function as arguments
+* functions returning a function
+
+==> treat function as first class members similar to primitives or object
 
 
 
+```
+type Product = {
+ id:number,
+ name: string,
+ price:number,
+ category:string;
+}
+
+// HOF with Generics
+function forEach<T>(elems:T[], action:(elem:T) => void): void {
+	let i:number;
+	for(i = 0; i < elems.length; i++) {
+		action(elems[i]);
+	}
+}
+	
+let nos:number[] = [ 6,3,2,1,5,9];
+forEach<number>(nos, console.log);
+let names:string[] = ["Sita", "Geetha", "Rita", "Raj"];
+forEach<string>(names, console.log);
+
+let products:Product[] = [
+    {"id":1,"name":"iPhone","price":124447.44,"category" : "mobile"},
+    {"id":2,"name":"Onida","price":4444.44,"category" : "tv"},
+    {"id":3,"name":"OnePlus 6","price":98444.44,"category" : "mobile"},
+    {"id":4,"name":"HDMI connector","price":2444.00,"category" : "computer"},
+      {"id":5,"name":"Samsung","price":68000.00,"category" : "tv"}];
+
+forEach<Product>(products, console.log);
+
+```
+npm -g typescript
+
+tsc hof1.ts
+generates a "js" file ==> hof1.js
 
 
 
