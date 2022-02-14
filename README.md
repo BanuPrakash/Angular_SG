@@ -720,12 +720,91 @@ module: {
         ]
     }
 
+===========
+
+Bundles
+a single bundle file will be heavy on network traffic and leads to FCP issues
+
+First Contentful Paint ==> Core Web Vitals
+
+bundle.js is heavy
+
+break it down into many modules:
+main.module.js ==> min required for FCP
+
+chunks.js ==> cart module
+
+customer.js ==> 
  
- 
+============
+
+TypeScript
+
+Decorators are HOF / closure to introduce new properties into an object same as HOC of React
+
+@DecoratorName({
+	property1:...,
+	property2:...
+})
+class MyClass {
+	x:string;
+	y:number;
+}
+
+====
+
+@Component({
+	templateUrl:'...',
+	selector:....
+})
+class Component1 {
+
+}
 
 
+@Component({
+	templateUrl:'...',
+	selector:....
+})
+class Component2 {
+	
+}
+
+=============
+
+tsconfig.json
+"experimentalDecorators": true
 
 
+Object.defineProperty() defines a new property directly on an object, or modifies an existing property on an object, and returns the object.
+
+
+function Product() {
+
+} 
+
+Product.prototype.getName = function() {
+
+}
+
+===
+Object.defineProperty(target.prototype, "subject", {
+            "value": () => config.name
+        });
+  P["subject"]();
+
+Object.defineProperty(target.prototype, "subject", {
+            "value": config.name
+        });  
+P["subject"]
+
+=======================
+
+npm i -g @angular/cli
+
+ng --version
+
+=================
 
 
 
