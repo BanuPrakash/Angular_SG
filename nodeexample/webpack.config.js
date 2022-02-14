@@ -4,13 +4,19 @@ const path = require('path'); // built-in node module
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-    entry:'./src/index.ts',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[contenthash].js'
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: "vendor"
+        }
     },
     plugins: [new HtmlWebpackPlugin({
-        template:path.resolve(__dirname, "src","index.html")
+        template: path.resolve(__dirname, "src", "index.html")
     })],
     module: {
         rules: [
@@ -18,6 +24,10 @@ const config = {
                 test: /\.ts(x)?$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
             }
         ]
     },

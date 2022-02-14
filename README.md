@@ -697,11 +697,28 @@ helps in Hot reload
 
    npm start
 
+==============
+
+npm i -D css-loader style-loader
+
+css-loader like ts-loader loads all files having "css" extension
+
+loaded files will be placed in <style></style> by style-loader
 
 
-
-
-
+module: {
+        rules: [
+            {
+                test: /\.ts(x)?$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use:["style-loader", "css-loader"]
+            }
+        ]
+    }
 
  
  
