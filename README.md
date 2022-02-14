@@ -668,6 +668,35 @@ asset bundle.js 893 bytes [emitted] [minimized] (name: main)
 ./src/Person.ts 429 bytes [built] [code generated]
 webpack 5.68.0 compiled successfully in 5795 ms
 
+===============
+html-webpack-plugin
+
+The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles. This is especially useful for webpack bundles that include a hash in the filename which changes every compilation
+
+index.html
+
+<script src="bundle.js"></script>
+
+
+main.565csdf21f.js ==> all my compiled ts files
+vendor.232sfsdf4.js ==> from "node_modules" ==> jquery, lodash
+runtime.dfdfgdf334.js ==> react, angular
+
+helps in Hot reload
+
+  plugins: [new HtmlWebpackPlugin({
+        template:path.resolve(__dirname, "src","index.html")
+    })]
+
+
+  =============
+  
+  webpack-dev-server for starting server for development environment with live reload.
+
+   "start": "webpack serve --open --mode production"
+
+   npm start
+
 
 
 
