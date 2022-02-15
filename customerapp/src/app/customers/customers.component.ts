@@ -7,12 +7,10 @@ import Customer from '../common/Customer';
   styleUrls: ['./customers.component.css']
 })
 export class CustomersComponent implements OnInit {
-
   customers: Customer[] = [];
   complete: Customer[] = [];
   title: string = "Customer Application";
   searchText: string = "Hello";
-
   constructor() { }
 
   ngOnInit(): void {
