@@ -9,12 +9,14 @@ import Customer from '../common/Customer';
 export class CustomersComponent implements OnInit {
 
   customers: Customer[] = [];
+  complete: Customer[] = [];
   title: string = "Customer Application";
+  searchText: string = "Hello";
 
   constructor() { }
 
   ngOnInit(): void {
-    this.customers = [{
+    this.customers = this.complete = [{
       "id": 1,
       "firstName": "Rachel",
       "lastName": "Green ",
@@ -59,7 +61,18 @@ export class CustomersComponent implements OnInit {
     ];
   }
 
-  deleteCustomerData(id:number) :void {
+  deleteCustomerData(id: number): void {
     this.customers = this.customers.filter(c => c.id !== id);
+  }
+
+  filterCustomers() {
+    this.customers = this.complete.filter(c => {
+      if ((c.firstName.toUpperCase().indexOf(this.searchText.toUpperCase()) >= 0)
+        ||
+        (c.lastName.toUpperCase().indexOf(this.searchText.toUpperCase()) >= 0)) {
+        return true;
+      }
+      return false;
+    });
   }
 }

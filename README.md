@@ -1037,12 +1037,98 @@ generate template, css and class and adds to app.module.ts
  ]
 
 ==================
-
-
-
-
  
+[] is a property binding ==> mechaism to pass data from Parent ==> Child
+In Child access it using @Input()
+
+Parent Component:
+class ParentComponent {
+	elements:number[] = [34,66,2235,3];
+}
+parent.component.html
+
+<child [data]="elements" ></child>
 
 
+class ChildComponent {
+	@Input()
+	data:number[] = []
+}
+
+====
 
 
+() is for event binding on child ==> an observable
+
+class ParentComponent {
+	doTask() {
+
+	}
+
+	someTask() {
+
+	}
+}
+
+parent.component.html
+
+<button (click)="doTask()">Click</button>
+
+<child (customEvent) ="someTask()"></child>
+
+class ChildComponent {
+	@Output()
+	customEvent:EventEmitter<string> = new EventEmitter<string>();
+ 	..
+ 	customEvent.emit("Hello!!!");
+}
+
+====================
+
+
+Filter:
+
+ [(ngModel)] = "searchText"
+
+ Two-way binding [()] between Component and template
+ 
+  <input
+        type="text"
+        [(ngModel)] = "searchText"
+        name="searchText"
+        class="novalidate form-control  mr-sm-2"
+        />
+
+
+to use ngModel we need FormsModule
+app.module.ts
+import {FormsModule} from '@angular/forms';
+
+imports: [
+    BrowserModule, FormsModule
+ ],
+
+
+CustomersComponent.ts
+searchText:string = "";
+```
+ <input
+                      type="text"
+                      [(ngModel)] = "searchText"
+                      name="searchText"
+                      class="novalidate form-control  mr-sm-2"
+                      (keyup) = "filterCustomers()"
+                    />
+
+
+  filterCustomers() {
+    this.customers = this.complete.filter(c => {
+      if ((c.firstName.toUpperCase().indexOf(this.searchText.toUpperCase()) >= 0)
+        ||
+        (c.lastName.toUpperCase().indexOf(this.searchText.toUpperCase()) >= 0)) {
+        return true;
+      }
+      return false;
+    });
+  }
+```
