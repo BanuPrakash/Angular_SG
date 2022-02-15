@@ -1164,4 +1164,135 @@ Testing using Mocks and in Isolation ==> CustomerCardComponent.ts depends on Cus
 
 npm test
 
+customes.component.spec.ts
+customerscard.component.spect.ts
+
+===================
+
+npm i -D cypress
+
+ng add @cypress/schematic
+
+Would you like to proceed : Y
+
+Would you like the default `ng e2e` command to use Cypress? Y
+
+=========
+
+Jasmine, JEST, Mocha ==> Unit testing
+
+E2E Testing
+
+Selenium, Protractor and Cypress
+
+Upto Angular 9 Protractor was default and included in scaffolding code
+
+The Angular team plans to end development of Protractor at the end of 2022
+
+=============
+
+To run End to end testing:
+
+npm run e2e
+
+
+=============================================
+
+Dependency Injection
+Dependencies are services or objects that a class needs to perform its function
+
+Angular's DI framework provides dependencies between objects at the time of creation [ constructor DI]
+
+
+Services:
+
+Observable Pattern: 
+
+Define one-to-many depdency between objects so that when one object changes state, all its dependencies are notified and updated
+
+RxJS
+Reactive programming is an asynchronous programming paradigm concerned with data streams and propagation of change.
+
+
+```
+ <script>
+        function doTask() {
+            return new Promise( (resolve, reject) => {
+                setTimeout(() => {
+                    resolve("All Good :-)")
+                }, 2000);
+            })
+        }
+
+        doTask()
+            .then(
+                (data) => console.log("resolved ", data),
+                (err) => console.log("Error ", err)
+            ).catch(err => console.log("exception!!!"));
+
+        console.log("Bye!!!");
+
+    </script>
+```
+
+Promise based Aync opertion results in either "resolved" or "rejected" ==> only one output
+
+RxJS ==> stream of data instead of one shot resolved / rejected
+
+onNext(data)
+onComplete()
+onError()
+
+```
+import {from, interval} from 'rxjs';
+
+ngOnInit(): void {
+    // create an Observable out of Promise
+    const users$ = from(fetch("http://jsonplaceholder.typicode.com/users"));
+
+    // observer 1
+    users$.subscribe({
+      next(response:any) { console.log("next ", response)},
+      complete() {console.log("Done!!!")},
+      error(err:any) {console.log("Error ", err)}
+    })
+
+    // observer 2
+    users$.subscribe({
+      complete() {console.log("Second completed!!!")}
+    });
+  }
+
+
+ ngOnInit(): void {
+     const counter$ = interval(1000);
+     counter$.subscribe(n => console.log("value ", n));
+  }
+
+
+===
+ngOnInit(): void {
+     const el:any = document.getElementById("card");
+     // observable from an event
+
+     const mouseObservable$ = fromEvent<MouseEvent>(el, 'mousemove');
+
+     const subscription =  mouseObservable$.subscribe(evt => {
+      console.log(`${evt.clientX} ${evt.clientY}`);
+
+      if(evt.clientX < 40 && evt.clientY < 40) {
+        subscription.unsubscribe();
+      }
+     });
+     
+ ```
+
+
+
+
+
+
+
+
+
 

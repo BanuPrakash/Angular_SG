@@ -4,12 +4,14 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersCardComponent } from './customers-card/customers-card.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
-    CustomersCardComponent
+    CustomersCardComponent,
+    RxjsComponent
   ],
   imports: [
     BrowserModule, FormsModule
