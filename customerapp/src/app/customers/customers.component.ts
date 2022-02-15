@@ -59,4 +59,7 @@ export class CustomersComponent implements OnInit {
     ];
   }
 
+  deleteCustomerData(id:number) :void {
+    this.customers = this.customers.filter(c => c.id !== id);
+  }
 }
