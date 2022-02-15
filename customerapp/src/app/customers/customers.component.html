@@ -1,5 +1,4 @@
 <h1>{{title}}</h1>
-
-<div *ngFor="let customer of customers">
-    {{customer.firstName}} {{customer.lastName}}
-</div>
+ 
+<app-customers-card [customers]="customers"></app-customers-card>
+ 
