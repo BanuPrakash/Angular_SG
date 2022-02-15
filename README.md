@@ -999,10 +999,49 @@ Bootstrap a CSS framework for RWD ==> Responsive web design
 
 A "row" is made of 12 columns irrespective of viewport width
 
-=======================================
+============================================
 
-Resume @ 11:20
+Each component has "ts", "template html" and "css"
 
+ng generate component customers
+
+or
+
+ng g c customers
+
+generate template, css and class and adds to app.module.ts
+
+ declarations: [
+    AppComponent,
+    CustomersComponent
+  ]
+
+Angular built-in Structural directives (starts with *) : *ngFor, *ngIf and *ngSwitch
+
+<div *ngFor="let customer of customers">
+    {{customer.firstName}} {{customer.lastName}}
+</div>
+
+Structural directives does DOM manipulation [ create / destroy ]
+
+=========
+
+ng g c customers-card
+
+generate template, css and class and adds to app.module.ts
+
+ declarations: [
+    AppComponent,
+    CustomersComponent,
+    CustomersCardComponent
+ ]
+
+==================
+
+
+
+
+ 
 
 
 
