@@ -1132,3 +1132,36 @@ searchText:string = "";
     });
   }
 ```
+
+
+Unit Testing
+JS Testing frameworks: Jasmine, Jest, Mocha
+
+React ==> RTL built on top of JEST
+
+ATL ==> Angular Testing Library on top of Jasmine and Karma [ test runner]
+
+AAA ===> Assemble, Action, Assert
+
+// Assemble Test Suite
+describe("some description of test suite", () => {
+	// test case
+	it("tesing delete", () => {
+		action
+		assert
+	});
+	// test case
+	it("test filter", () => {
+		action
+		assert
+	})
+})
+
+
+=============
+
+Testing using Mocks and in Isolation ==> CustomerCardComponent.ts depends on CustomersComponent
+
+npm test
+
+
