@@ -964,7 +964,44 @@ Angular Framework building blocks:
 
 ===================================================
 
+angular.json is used by webpack internally
+Entry point:
+  "main": "src/main.ts"
 
+platformBrowserDynamic().bootstrapModule(AppModule)
+
+
+Module is a collection of components, services. module can use other modules
+
+npm i @bootstrap@4.6.0 font-awesome@4.7.0
+
+=================
+
+download share.zip from github , extract
+
+>npm start
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   1.70 MB | 
+polyfills.js          | polyfills     | 299.96 kB | 
+styles.css, styles.js | styles        | 173.23 kB | 
+main.js               | main          |   6.61 kB | 
+runtime.js            | runtime       |   6.52 kB |
+
+https://caniuse.com/
+
+============
+
+Bootstrap a CSS framework for RWD ==> Responsive web design
+
+==> adopt to different devices and resolution
+==> uses Grid system
+
+A "row" is made of 12 columns irrespective of viewport width
+
+=======================================
+
+Resume @ 11:20
 
 
 
