@@ -806,11 +806,163 @@ ng --version
 
 =================
 
+Day 2
 
+Intro to JS
+TypeScript
+==> Basic types, object, enum, array, function
+==> generics, interface, class
+HOF ==> high order functions [ function as argument / function as return]
+Closure ==> mechanism where returned function will have access to all the members of outer function
+memozie pattern ==> Decorators
 
+NodeJS, NPM / YARN
+package.json
+Webpack ==> rules for "ts-loader" / "css-loader" & "style-loader" / "babel-loader" 
+HtmlWebpackPlugin ==> automate inclusion of bundles in html page
+Webpack Dev Server ==> by default runs on 8080 port with hot reload options
 
+===========================================================================
 
+Rendering: data to presentation
+
+Server Side Rendering: data to presentation on server and presentation page is sent to client [html/pdf/image], client app just needs to interpret the presentation
+--> thin clients
+Server side tempates
+* Servlet / JSP
+* ASP or ASP.NET
+* PHP
+* JS: EJS, JADE, PUG
+
+Client Side Rendering: Server using RESTful or GraphQL web services will send JSON data to client
+
+Client side web application uses templates to render the data in client machine
+* jQuery Template
+* Mustache {{, Handlebars #
+
+ <div id="target">Loading...</div>
+    <script id="template" type="x-tmpl-mustache">
+      Hello {{ name }}!
+    </script>
+
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script>
+    	function renderHello() {
+ 		    var template = document.getElementById('template').innerHTML;
+  			var rendered = Mustache.render(template, { name: 'Luke' });
+       		document.getElementById('target').innerHTML = rendered;
+ 		}
+    </script>
+  </body>
+
+===================================
+
+SPA ==> Single Page Application
+* data binding ==> one-way and two-way binding
+* Modularization ==> many modules [ 	]
+* DI ==> Dependency Injection
+* Routers
+	different URIs should display different views in a SPA
+
+	http://amazon.com
+	loads index.html
+	with default content
+
+	http://amazon.com/mobiles
+		dispay mobiles in index.html
+
+	http://amazon.com/mobiles/iPhone/13
+	http://amazon.com/mobiles/Pixel
+	http://amazon.com/tvs/sony
 	
+	http://amazon.com/cart
+
+	1) History API
+	2) navigation between views instead of pages
+	3) Bookmark
+	4) SEO
+	5) Protection
+	6) Lazy loading of modules
+
+
+Options
+1) React Library
+2) Backbone Framework
+3) AngularJS Framework (old upto v1.7)
+4) Angular Framework (new v2+) ==> current version is v13
+5) Vue Library
+
+Library ==> partial solution
+Framework => complete solution
+
+React is just view library, rendering i depend on ReactDOM, ReactTv, ReactNative
+Redux, axios
+
+npm i -g @angular/cli
+ng --version
+
+ng new customerapp
+
+creates scaffolding code using webpack internally
+AngularRouting ==> N
+CSS
+
+
+Angular Framework building blocks:
+
+1) Module
+	AppModule, CustomerModule, ProductModule, PaymentModule
+
+	@NgModule()
+	export class CustomerModule {}
+
+2) Component
+	@Component()
+	export class ProductList {
+		state [ product ]
+		behaviour [ CRUD operation on product]
+	}
+
+3) Services
+	classes which are for business logic / api calls 	
+
+	@Injectable()
+	export class RestService {
+		api calls 
+	}
+
+4) Router module
+5) Directives
+		can be used along with DOM or components to introduce additional behaviours which does not
+		imply to CRUD 
+		like highlight component, hide, show
+
+		<customers highlight></customers>
+		<button highlight></button>
+6) Pipe
+	to transform data
+
+	{{date}}
+	{{date | dateFormat('dd-MMM-yyy')}}
+
+	dateFormat is a Pipe
+
+	{{firstName | upper}}
+
+	upper is a pipe
+
+7) Guards
+	used to protect Routes	
+
+8) HTTPInterceptors
+	intercept the request; add additional data to request before sending to server
+	example: 
+
+	{
+		"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+	}
+
+==========================
 
 
 
