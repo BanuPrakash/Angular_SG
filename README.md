@@ -1647,14 +1647,7 @@ ng g d hover
 
 ====
 
-Building blocks:
-1) Module
-2) Component
-3) Services
-4) Directives
-5) Pipe
-ng g pipe textconverter
-6) Router
+
 
 =====================================
 
@@ -1707,7 +1700,164 @@ http://localhost:4200/orders
 
 
 
- 
+ http://localhost:4200/ava
+
+  {
+    path:'*',
+    component:HomeComponent
+  }
+
+
+  app.module.ts
+
+const routes:Route[] = [
+  {
+    path:'home',
+    component:HomeComponent
+  },
+  {
+    path:'customers',
+    component:CustomersComponent
+  },
+  {
+    path:'',
+    component:HomeComponent
+  },
+  {
+    path:'*',
+    component:HomeComponent
+  }
+]
+
+   imports: [
+    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)
+  ],
+
+
+===
+
+ <a class="nav-link" href="#" routerLink="/">Home </a>
+ <a class="nav-link" href="#" routerLink="/customers">Customers</a>
+ <a class="nav-link" href="#" routerLink="/orders">Orders</a>
+
+
+============
+
+Routes of OrderModule
+
+===============
+
+ng g c customer-edit
+
+Template variables: Template variables help you use data from one part of a template in another part of the template. 
+<input #phone placeholder="phone number" />
+
+
+
+Building blocks:
+1) Module
+2) Component
+3) Services
+4) Directives
+5) Pipe
+ng g pipe textconverter
+6) Router
+7) Guard
+8) HTTPInterceptor
+
+Angular Route Guard is an interface which can be implemented to decide if a route can be activated
+
+Interceptor can be used to add additional info into request like JWT token
+
+
+ng g interceptor Myhttp
+
+===========================================================
+
+ChangeDetection Policy
+
+In Angular and side effects ==> DOM events, setInterval, setTimeout, API calls ==> Angular runs a detection cycle
+
+In React --> state or props changes --> re-render happens
+
+------------
+
+https://stackblitz.com/edit/change
+	
+ changeDetection: ChangeDetectionStrategy.Default
+
+ every change to injected data using @Input() re-render the child components
+
+
+  changeDetection: ChangeDetectionStrategy.OnPush
+
+ ```
+ import { Component } from '@angular/core';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  foods = ['Burger', 'Rolls', 'Pizza'];
+
+  addFood(food) {
+    // this.foods = [...this.foods, food];
+    this.foods.push(food);
+  }
+}
+
+<input #newFood type="text" placeholder="Enter a new food">
+<button (click)="addFood(newFood.value)">Add food</button>
+
+<app-child [data]="foods"></app-child>
+
+````
+
+Child Component:
+
+```
+import {
+  Component,
+  Input 
+} from "@angular/core";
+
+@Component({
+  selector: "app-child",
+  templateUrl: "./child.component.html",
+  // changeDetection: ChangeDetectionStrategy.OnPush  
+  // changeDetection: ChangeDetectionStrategy.Default  
+})
+export class ChildComponent {
+  @Input() data: string[];
+
+}
+
+````
+
+Trigger re-render on child component
+
+export class ChildComponent {
+  @Input() data: string[];
+
+  constructor(private cd: ChangeDetectorRef) {}
+
+  refresh() {
+    this.cd.detectChanges();
+  }
+}
+
+<ul>
+	<li *ngFor="let item of data">{{ item }}</li>
+</ul>
+
+<button (click)="refresh">Refresh</button>
+
+```
+
+
+
 
 
 
