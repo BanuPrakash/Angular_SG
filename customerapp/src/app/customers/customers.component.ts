@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Customer from '../common/Customer';
 import { DataService } from '../common/data.service';
@@ -26,7 +26,10 @@ export class CustomersComponent implements OnInit {
 
   deleteCustomerData(id: number): void {
     // this.customers = this.customers.filter(c => c.id !== id);
-    this.dataService.deleteCustomer(id).subscribe(data => console.log(data));
+    this.dataService.deleteCustomer(id).subscribe(response =>
+     this.dataService.getCustomers().subscribe(data => {
+      this.customers = this.complete = data;
+    }));
   }
 
   filterCustomers() {

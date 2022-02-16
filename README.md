@@ -1512,6 +1512,33 @@ export class CustomersComponent implements OnInit {
 
 ```
 
+Building backend RESTful Web services
+* Spring Boot
+* ExpressJS
+* ASP.NET Razor MVC
+* PHP
+
+JSON Server: Get a full fake REST API with zero coding in less than 30 seconds
+
+data.json
+
+{
+	"products": [],
+	"orders": [],
+	"customers": []
+}
+
+from this file "products", "orders" and "customers" becomes an endpoint
+
+http://server/products
+http://server/orders
+http://server/customers
+
+
+npx json-server --watch data.json --port 1234
+
+=====================
+
 
 
 
