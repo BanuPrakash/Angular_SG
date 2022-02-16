@@ -14,6 +14,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { HoverDirective } from './hover.directive';
 import { TextconverterPipe } from './textconverter.pipe';
 import { HomeComponent } from './home/home.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 // configure Routes
 const routes:Route[] = [
@@ -50,7 +51,8 @@ const routes:Route[] = [
     CustomerListComponent,
     HoverDirective,
     TextconverterPipe,
-    HomeComponent
+    HomeComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)
