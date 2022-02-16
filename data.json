@@ -15,13 +15,6 @@
       "address": "East Street"
     },
     {
-      "id": 3,
-      "firstName": "Joey",
-      "lastName": "Freddy",
-      "gender": "male",
-      "address": "M G Road"
-    },
-    {
       "id": 4,
       "firstName": "Monica",
       "lastName": "Geller",
