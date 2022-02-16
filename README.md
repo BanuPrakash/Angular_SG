@@ -1577,6 +1577,101 @@ Auto unsubscribe
 
 ================================================================
 
+* Directives
+
+Directives are custom HTML attributes which tell angular to change the style or behaviour of the DOM elements
+
+types of directives:
+1) Component -- directives with template [ AngularJS < 1.6 there was no concept of component, only directives were present]
+
+2) Attribute directives --> directives that change the appearance or behaiour of an element, component
+
+3) Structural directives -> that change the DOM layout by adding or removing DOM elements
+	*ngFor, *ngIf, *ngSwitch
+
+
+export class CustomersComponent implements OnInit {
+	isCard:boolean = true;
+
+
+
+<app-customers-card *ngIf="isCard"
+    (delEvent)="deleteCustomerData($event)" 
+    [customers]="customers"></app-customers-card>
+
+<app-customer-list *ngIf="!isCard"></app-customer-list>
+
+-----------------------------------
+
+Built-in Attribute directives
+1) NgClass --> adds and removes a set of css classes
+2) NgStyle --> adds and removes a set of HTML styles
+3) NgModel --> adds two-way binding to HTML form elements ===> [(ngModel)] ="searchText"
+
+
+Example of ngClass
+
+```
+one.component.css
+.primary {
+    color: red;
+}
+
+.secondary {
+    color: burlywood;
+}
+
+
+export class OneComponent implements OnInit {
+  flag:boolean = true;
+
+one.component.html
+<div [ngClass]="flag? 'primary': 'secondary'">
+    Some text here!!!
+</div>
+
+<button (click)="flag= !flag">Change</button>
+
+```
+
+similary 
+<div [ngStyle]="{border:'3px solid red'}">
+
+==========================================
+Component ==> crud on model data ==> customer, product, order, ...
+Directives ==> decoration, style, hide, show, ... on component or DOM
+
+Custom Directives:
+
+ng g d hover
+
+====
+
+Building blocks:
+1) Module
+2) Component
+3) Services
+4) Directives
+5) Pipe
+ng g pipe textconverter
+6) Router
+
+=====================================
+
+@ViewChild
+
+==> to get reference to underlying DOM or Child components; so that parent component can access members of child
+using the reference
+
+==> check 3rd party components like NVD3, PrimeNG, KendoUI
+
+https://stackblitz.com/
+
+https://stackblitz.com/edit/ng-view-child
+
+
+=======================
+
 
 
 
