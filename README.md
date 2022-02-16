@@ -1287,6 +1287,161 @@ ngOnInit(): void {
      
  ```
 
+Day 3
+
+-----
+
+component, @Input(), @Output(), *ngFor
+
+[] property binding
+() event binding
+[()] two way binding ngModel ==> FormsModule
+
+
+rxjs ==> Reactive Programming
+Observable push data over a period of time ==> send a stream of data
+next(data), complete(), error(err)
+
+Observer uses
+onNext(data), onComplete(), onError()
+
+Observer subscribes for Observable
+
+==================================================
+
+
+1) Subject is an type of observable ==> a subscriber will only get published values that were emitted after subscription.
+
+2) BehaviourSubject -- the last value is cached
+
+	emit --> 1 , 2, 3
+
+	observer subscribes ==> he gets "3" and not 1, 2, and subsequent values from now on generered will be recived
+
+3) ReplaySubject ==> cache n number of emission
+	
+	new ReplaySubject<number>(5);
+
+	observer subscribes , he can get previous 5 values emiited and subsequent once
+	
+
+```
+ng g service common/shared
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SharedService {
+
+  constructor() { }
+}
+
+Singleton instances:
+
+@Injectable({
+  providedIn: 'root'
+})
+RootInjector ==> providedIn: 'root' ==> any module or component can use this
+
+@Injectable({
+  providedIn: 'UserModule'
+})
+
+
+
+instance per component:
+
+@Injectable()
+
+@Component({
+  selector: 'app-customers-card',
+  templateUrl: './customers-card.component.html',
+  providers:[SharedService],
+  styleUrls: ['./customers-card.component.css']
+})
+export class CustomersCardComponent implements OnInit {
+
+```
+
+
+ng g c one
+ng g c two
+
+OneComponent generates data ==> Service
+TwoComponent conumes data <== Service
+
+==================
+
+
+HttpClientModule has HttpClient service which is Observable to make http API calls
+
+app.module.ts
+import {HttpClientModule} from '@angular/common/http';
+
+ imports: [
+    BrowserModule, FormsModule, HttpClientModule
+]
+
+-------
+```
+ng g s common/data
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import Customer from './Customer';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+  customerUrl: string = "http://localhost:1234/customers";
+
+  // inject HttpClient Service from HttpClientModule
+  // using which we can make CRUD operation using HTTP
+  constructor(private http: HttpClient) { }
+
+  // http://localhost:1234/customers
+  getCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.customerUrl);
+  }
+
+  // http://localhost:1234/customers/4
+  getCustomer(id: number): Observable<Customer> {
+    return this.http.get<Customer>(this.customerUrl + "/" + id);
+  }
+
+  addCustomer(customer: Customer): Observable<any> {
+    return this.http.post(this.customerUrl, customer);
+  }
+
+  // http://localhost:1234/customers/4 
+  updateCustomer(customer: Customer): Observable<any> {
+    return this.http.put(this.customerUrl + "/" + customer.id, customer);
+  }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete<any>(this.customerUrl + "/" + id);
+  }
+}
+
+
+
+```
+
+
+CRUD on http
+
+CREATE ==> POST
+READ ==> GET
+UPDATE ==> PUT
+DELETE ==> DELETE
+
+
+
+
 
 
 
