@@ -15,6 +15,7 @@ import { HoverDirective } from './hover.directive';
 import { TextconverterPipe } from './textconverter.pipe';
 import { HomeComponent } from './home/home.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { LinkActivateGuard } from './common/LinkActivateGuard';
 
 // configure Routes
 const routes:Route[] = [
@@ -32,6 +33,7 @@ const routes:Route[] = [
   },
   {
     path:'orders',
+    canActivate:[LinkActivateGuard],
     loadChildren:() => import('./orders/orders.module').then(m => m.OrdersModule)
   },
   {

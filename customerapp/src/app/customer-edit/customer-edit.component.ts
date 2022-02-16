@@ -56,6 +56,7 @@ export class CustomerEditComponent implements OnInit {
      this.dataService.updateCustomer(this.customer)
           .subscribe(data => {
              this.customerForm.form.markAsPristine();
+             this.router.navigate(['/customers']);
         });
   }
   
