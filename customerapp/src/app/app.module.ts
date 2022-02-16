@@ -11,6 +11,7 @@ import { OneComponent } from './one/one.component';
 import { TwoComponent } from './two/two.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { HoverDirective } from './hover.directive';
+import { TextconverterPipe } from './textconverter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HoverDirective } from './hover.directive';
     OneComponent,
     TwoComponent,
     CustomerListComponent,
-    HoverDirective
+    HoverDirective,
+    TextconverterPipe
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule
