@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Route} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -12,6 +13,27 @@ import { TwoComponent } from './two/two.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { HoverDirective } from './hover.directive';
 import { TextconverterPipe } from './textconverter.pipe';
+import { HomeComponent } from './home/home.component';
+
+// configure Routes
+const routes:Route[] = [
+  {
+    path:'home',
+    component:HomeComponent
+  },
+  {
+    path:'customers',
+    component:CustomersComponent
+  },
+  {
+    path:'',
+    component:HomeComponent
+  },
+  {
+    path:'**',
+    component:HomeComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -23,10 +45,11 @@ import { TextconverterPipe } from './textconverter.pipe';
     TwoComponent,
     CustomerListComponent,
     HoverDirective,
-    TextconverterPipe
+    TextconverterPipe,
+    HomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpClientModule
+    BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

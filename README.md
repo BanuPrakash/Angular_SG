@@ -1670,8 +1670,44 @@ https://stackblitz.com/
 https://stackblitz.com/edit/ng-view-child
 
 
-=======================
+=============================
 
+Create a module:
+
+ng g module orders
+
+* AppModule
+* OrdersModule
+
+Adding components / services to a module ==> by default all are added to "AppModule"
+
+ng g c orders --module=orders
+
+ng g c home
+
+
+Routers
+
+app.component.html
+<router-outlet></router-outlet>
+
+is a placeholder to display different components based on routes
+
+http://localhost:4200/customers
+<router-outlet></router-outlet> should render CustomersComponent ==> CustomerCardComponent
+
+http://localhost:4200/
+<router-outlet></router-outlet> should render HomeComponent
+
+http://localhost:4200/edit/3
+<router-outlet></router-outlet> should render CustomerEditComponent with pre-populated custoemr data in form
+
+http://localhost:4200/orders
+<router-outlet></router-outlet> should render OrdersComponent from OrdersModule
+
+
+
+ 
 
 
 
