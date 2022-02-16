@@ -24,13 +24,21 @@ export class CustomerEditComponent implements OnInit {
   
   @ViewChild('customerForm') customerForm!: NgForm;
   
+  /*
+  {
+    path:'customers/edit/:id',
+    component: CustomerEditComponent
+  }
+  */
+  // http://localhost:4200/customers/edit/5
+
   constructor(private router: Router, 
               private route: ActivatedRoute, 
               private dataService: DataService) { }
 
   ngOnInit() {
       this.route.params.subscribe((params: Params) => {
-        let id = +params['id'];
+        let id = +params['id']; //parseInt()
         if (id !== 0) {
               this.getCustomer(id);
         }
@@ -46,17 +54,9 @@ export class CustomerEditComponent implements OnInit {
 
   submit() {
      this.dataService.updateCustomer(this.customer)
-          .subscribe((status: boolean) => {
-            if (status) {
-              this.customerForm.form.markAsPristine();
-            }
-            else {
-              const msg = 'Unable to update customer';
-              this.errorMessage = msg;
-            }
-        },
-        (err: any) => console.log(err));
-      
+          .subscribe(data => {
+             this.customerForm.form.markAsPristine();
+        });
   }
   
   cancel(event: Event) {

@@ -35,6 +35,10 @@ const routes:Route[] = [
     loadChildren:() => import('./orders/orders.module').then(m => m.OrdersModule)
   },
   {
+    path:'customers/edit/:id',
+    component: CustomerEditComponent
+  },
+  {
     path:'**',
     component:HomeComponent
   }
