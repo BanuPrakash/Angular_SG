@@ -1,1 +1,5 @@
-<p>one works!</p>
+<div [ngClass]="flag? 'primary': 'secondary'" [ngStyle]="{border:'3px solid red'}">
+    Some text here!!!
+</div>
+
+<button (click)="flag= !flag">Change</button>

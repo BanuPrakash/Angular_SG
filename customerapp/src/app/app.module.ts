@@ -9,6 +9,8 @@ import { CustomersCardComponent } from './customers-card/customers-card.componen
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { OneComponent } from './one/one.component';
 import { TwoComponent } from './two/two.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { HoverDirective } from './hover.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { TwoComponent } from './two/two.component';
     CustomersCardComponent,
     RxjsComponent,
     OneComponent,
-    TwoComponent
+    TwoComponent,
+    CustomerListComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule

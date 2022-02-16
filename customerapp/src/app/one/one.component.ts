@@ -7,7 +7,7 @@ import { SharedService } from '../common/shared.service';
   styleUrls: ['./one.component.css']
 })
 export class OneComponent implements OnInit {
-
+  flag:boolean = true;
   // DI
   constructor(private sharedService:SharedService) { }
 

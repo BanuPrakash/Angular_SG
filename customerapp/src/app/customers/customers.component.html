@@ -44,7 +44,9 @@
    </div>
    
  
-<app-customers-card 
+<app-customers-card *ngIf="isCard"
     (delEvent)="deleteCustomerData($event)" 
     [customers]="customers"></app-customers-card>
+
+<app-customer-list *ngIf="!isCard"></app-customer-list>
  

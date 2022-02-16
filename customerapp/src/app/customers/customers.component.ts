@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Customer from '../common/Customer';
 import { DataService } from '../common/data.service';
@@ -13,7 +13,7 @@ export class CustomersComponent implements OnInit {
   complete: Customer[] = [];
   title: string = "Customer Application";
   searchText: string = "";
- 
+   isCard:boolean = true;
   // DI
   constructor(private dataService: DataService) { 
   }

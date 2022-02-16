@@ -1538,10 +1538,44 @@ http://server/customers
 npx json-server --watch data.json --port 1234
 
 =====================
+all customers:
+http://localhost:1234/customers
+
+using path parameter:
+http://localhost:1234/customers/3
+
+using query parameter:
+http://localhost:1234/customers?lastName=Geller
 
 
+http://localhost:1234/orders
 
 
+=================================
+
+
+Unsubscribe:
+
+Subscribe without unsubscribe will lead to memory leaks
+
+customerSubscription$!: Subscription;
+
+constructor(private dataService:DataService) {}
+
+ngOnInit(): void {
+	this.customerSubscription$ = this.dataService.getCustomers().subscribe(data => this.customers  = data);
+}
+
+
+ngOnDestroy(): void {
+	customerSubscription$.unsubscribe();
+}
+
+======================
+
+Auto unsubscribe
+
+================================================================
 
 
 
